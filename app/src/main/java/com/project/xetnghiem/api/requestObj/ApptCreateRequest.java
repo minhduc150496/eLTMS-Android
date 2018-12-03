@@ -10,7 +10,7 @@ public class ApptCreateRequest implements Serializable {
     @SerializedName("PatientId")
     private int patientId;
 
-    @SerializedName("isOnl")
+    @SerializedName("IsOnline")
     private boolean isOn = true;
 //    @SerializedName("GettingDate")
 //    private String gettingDate;//2018-11-04
