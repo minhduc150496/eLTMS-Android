@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="1dp"
+    android:paddingBottom="1dp"
+    >
+
+    <TextView
+        android:id="@+id/txt_result_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text=" " />
+
+    <TextView
+        android:id="@+id/txt_lower_result"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_red_500"
+        android:layout_toLeftOf="@id/txt_normal_result"
+        android:inputType="textMultiLine"
+        android:textStyle="bold|italic"
+        android:text=" " />
+
+    <TextView
+        android:id="@+id/txt_normal_result"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textStyle="bold"
+        android:text="  " />
+
+    <TextView
+        android:id="@+id/txt_high_result"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:inputType="textMultiLine"
+        android:textStyle="bold|italic"
+        android:textColor="@color/color_red_500"
+        android:layout_toRightOf="@id/txt_normal_result"
+        android:text=" " />
+
+    <TextView
+        android:id="@+id/txt_result_range"
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_alignParentRight="true"
+        android:text=" " />
+</RelativeLayout>

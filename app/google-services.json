@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "787497038677",
+    "firebase_url": "https://icefire-project.firebaseio.com",
+    "project_id": "icefire-project",
+    "storage_bucket": "icefire-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:787497038677:android:6af2ecb0bd704efe",
+        "android_client_info": {
+          "package_name": "com.project.xetnghiem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "787497038677-ooj3uat81c8k6bkk6132gtkegeepe5hd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTsjJwo1K7loVcVprhZ0LF-kBjbZomBsU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

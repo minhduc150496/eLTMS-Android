@@ -1,0 +1,122 @@
+package com.project.xetnghiem.activities;
+
+import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.project.xetnghiem.R;
+import com.project.xetnghiem.models.Patient;
+import com.project.xetnghiem.utilities.AppConst;
+import com.project.xetnghiem.utilities.Validation;
+
+import io.reactivex.SingleObserver;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Response;
+
+public class EditPasswordActivity extends BaseActivity implements View.OnClickListener {
+    private EditText txtPassword, txtConfirmPassword, txtCurrentPassword;
+    private Patient patient;
+    private Button btnChangePassword;
+
+    @Override
+    protected int getLayoutView() {
+        return R.layout.activity_edit_password;
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Bundle bundle = getIntent().getBundleExtra(AppConst.BUNDLE);
+        if (bundle.getSerializable(AppConst.PATIENT_OBJ) != null) {
+            patient = (Patient) bundle.getSerializable(AppConst.PATIENT_OBJ);
+        } else {
+            patient = new Patient();
+            patient.setId(-1);
+        }
+
+    }
+
+    @Override
+    public String getMainTitle() {
+        return getResources().getString(R.string.edit_pass_title);
+    }
+
+    @Override
+    public void bindView() {
+        txtPassword = findViewById(R.id.edt_password);
+        txtCurrentPassword = findViewById(R.id.edt_current_password);
+        txtConfirmPassword = findViewById(R.id.edt_confirm_password);
+        btnChangePassword = findViewById(R.id.btn_update_password);
+        btnChangePassword.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void updateUIData(Object obj) {
+
+    }
+
+    @Override
+    public void onCancelLoading() {
+
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
+
+    public boolean isValid() {
+        boolean isValid = true;
+        txtPassword.setError(null);
+        txtConfirmPassword.setError(null);
+        View focusView = null;
+        String password = txtPassword.getText().toString().trim();
+        String currentPassword = txtCurrentPassword.getText().toString().trim();
+        String confirmPassword = txtConfirmPassword.getText().toString().trim();
+        if (!Validation.isPasswordValid(currentPassword)) {
+            txtCurrentPassword.setError(getString(R.string.error_invalid_password));
+            isValid = false;
+            focusView = txtCurrentPassword;
+        } else if (!confirmPassword.equals(password)) {
+            txtConfirmPassword.setError(getString(R.string.error_invalid_confirm_password));
+            isValid = false;
+            focusView = txtConfirmPassword;
+        } else if (!Validation.isPasswordValid(password)) {
+            txtPassword.setError(getString(R.string.error_invalid_password));
+            isValid = false;
+            focusView = txtPassword;
+        }
+        if (!isValid) {
+            focusView.requestFocus();
+        }
+        return isValid;
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_update_password:
+                if (isValid()) {
+//                    callApiUpdate(patient.getPhone(), txtCurrentPassword.getText().toString().trim(), txtPassword.getText().toString().trim());
+                }
+                break;
+        }
+    }
+
+    private Disposable userServiceDisposable;
+
+    public void callApiUpdate(String phone, String currentPassword, String newPassword) {
+        showLoading();
+
+    }
+
+
+}

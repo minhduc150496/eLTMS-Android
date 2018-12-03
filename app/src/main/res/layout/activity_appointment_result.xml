@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.AppointmentResultActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+<LinearLayout
+    android:id="@+id/info_section"
+    android:layout_below="@id/toolbar"
+    android:layout_above="@+id/link"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_page">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="2dp"
+            android:text=" " />
+
+        <TextView
+            android:id="@+id/tv_birth_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_below="@id/tv_name"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tv_date_register"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_birth_year"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_below="@id/tv_date_register"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tv_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_below="@id/tv_address"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/tv_time_register"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_gender"
+            android:text="" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        >
+
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="Tên xét nghiệm"
+            android:inputType="textMultiLine"
+            android:minLines="2"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Kết quả"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:inputType="textMultiLine"
+            android:gravity="right"
+            android:text="Chỉ số bình thường"
+            android:minLines="2"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listview_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
+
+
+</LinearLayout>
+    <TextView
+    android:id="@+id/link"
+    android:layout_width="match_parent"
+    android:layout_height="20dp"
+    android:autoLink="web"
+        android:layout_alignParentBottom="true"
+    android:layout_marginLeft="16dp"
+        android:layout_marginBottom="10dp"
+    android:text="Gợi ý các bệnh viện có khoa chuyên ngành"
+
+    />
+</RelativeLayout>

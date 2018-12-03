@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.project.xetnghiem">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activities.MainActivity" />
+        <activity android:name=".activities.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.FeedbackActivity" />
+        <activity android:name=".activities.BookApptActivity" />
+        <activity android:name=".activities.RegisterActivity" />
+        <activity android:name=".activities.EditAccoutActivity" />
+        <activity android:name=".activities.EditPasswordActivity" />
+
+        <service android:name=".firebase.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".firebase.FirebaseMessageService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".activities.AccountActivity" />
+        <activity android:name=".activities.AppointmentResultActivity" />
+        <activity android:name=".activities.ResultHistoryActivity" />
+        <activity android:name=".activities.AppointmentActivity" />
+        <activity
+            android:name=".activities.AppointmentListActivity"
+            android:label="@string/title_activity_appointment_list"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activities.TestActivity" />
+        <activity android:name=".activities.EditAppointmentActivity" />
+        <activity android:name=".activities.ShowAppointmentActivity" />
+        <activity android:name=".activities.DoneApptActivity" />
+        <activity android:name=".activities.ApptDetailActivity"></activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/labbg"
+    android:orientation="vertical"
+    tools:context=".activities.MainActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_page">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:id="@+id/grid_book_appt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@color/color_main_background"
+                android:gravity="center"
+                android:paddingTop="@dimen/grid_pdd_top_bot"
+                android:paddingBottom="@dimen/grid_pdd_top_bot">
+
+                <ImageView
+                    android:id="@+id/img_bookappt_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/icon_height"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_event_note_black_24dp"
+                    android:tint="@color/color_main_icon" />
+
+                <TextView
+                    android:id="@+id/lbl_bookappt_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/img_bookappt_main"
+                    android:gravity="center"
+                    android:text="Đặt lịch"
+                    android:textColor="@color/color_main_text"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/grid_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@color/color_main_background"
+                android:gravity="center"
+                android:paddingTop="@dimen/grid_pdd_top_bot"
+                android:paddingBottom="@dimen/grid_pdd_top_bot">
+
+                <ImageView
+                    android:id="@+id/img_account_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/icon_height"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_account_circle_black_24dp"
+                    android:tint="@color/color_main_icon" />
+
+                <TextView
+                    android:id="@+id/lbl_account_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/img_account_main"
+                    android:gravity="center"
+                    android:text="Tài khoản"
+                    android:textColor="@color/color_main_text"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:id="@+id/grid_appt_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@color/color_main_background"
+                android:gravity="center"
+                android:paddingTop="@dimen/grid_pdd_top_bot"
+                android:paddingBottom="@dimen/grid_pdd_top_bot">
+
+                <ImageView
+                    android:id="@+id/img_appt_history_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/icon_height"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_history_black_24dp"
+                    android:tint="@color/color_main_icon" />
+
+                <TextView
+                    android:id="@+id/lbl_appt_history_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/img_appt_history_main"
+                    android:gravity="center"
+                    android:text="Danh sách cuộc hẹn"
+                    android:textColor="@color/color_main_text"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/grid_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@color/color_main_background"
+                android:gravity="center"
+                android:paddingTop="@dimen/grid_pdd_top_bot"
+                android:paddingBottom="@dimen/grid_pdd_top_bot">
+
+                <ImageView
+                    android:id="@+id/img_result_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/icon_height"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_insert_drive_file_black_24dp"
+                    android:tint="@color/color_main_icon" />
+
+                <TextView
+                    android:id="@+id/lbl_result_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/img_result_main"
+                    android:gravity="center"
+                    android:text="Feedback (coming soon)"
+                    android:textColor="@color/color_main_text"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_blue_50"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            android:weightSum="2">
+
+            <RelativeLayout
+                android:id="@+id/grid_treatment_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@color/color_main_background"
+                android:gravity="center"
+                android:paddingTop="@dimen/grid_pdd_top_bot"
+                android:paddingBottom="@dimen/grid_pdd_top_bot"
+                android:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/img_treat_history_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/icon_height"
+                    android:layout_alignParentTop="true"
+                    android:src="@drawable/ic_book_black_24dp"
+                    android:tint="@color/color_main_icon" />
+
+                <TextView
+                    android:id="@+id/lbl_treat_history_main"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/img_treat_history_main"
+                    android:gravity="center"
+                    android:text="Lịch sử xét nghiệm"
+                    android:textColor="@color/color_main_text"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:background="@color/color_main_background"
+                android:gravity="center"
+                android:paddingTop="@dimen/grid_pdd_top_bot"
+                android:paddingBottom="@dimen/grid_pdd_top_bot">
+
+                <ImageView
+                    android:id="@+id/img_result_main2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/icon_height"
+                    android:layout_alignParentTop="true"
+                    android:tint="@color/color_main_icon" />
+
+                <TextView
+                    android:id="@+id/lbl_result_main2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/img_result_main2"
+                    android:gravity="center"
+                    android:text=" "
+                    android:textColor="@color/color_main_text"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

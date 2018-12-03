@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.BookStep1Fragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ListView
+            android:id="@+id/list_view_book_sample"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/btn_book"
+            android:layout_below="@id/txt_sample_date"
+            android:layout_alignParentTop="true"></ListView>
+
+        <!--  <LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="vertical">-->
+
+        <!--&lt;!&ndash;<ImageView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/img_logo_quick_register"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="130dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="130dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_gravity="center"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:focusable="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:focusableInTouchMode="true"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:src="@drawable/dental_icon" />&ndash;&gt;-->
+
+        <!--&lt;!&ndash;<TextView&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:gravity="center"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:text="@string/label_title_quickbook"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:textSize="24sp"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:textColor="@color/color_black"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_marginTop="20dp"&ndash;&gt;-->
+        <!--&lt;!&ndash;/>&ndash;&gt;<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="@dimen/margin_control"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1"-->
+        <!--android:drawableStart="@drawable/ic_search_black_24dp"-->
+        <!--android:drawablePadding="9dp"-->
+        <!--android:paddingStart="5dp"-->
+        <!--android:paddingEnd="5dp"-->
+        <!--android:text="Loại xét nghiệm" />-->
+
+        <!--<Button-->
+        <!--android:id="@+id/btn_list_treatmentstep"-->
+        <!--style="@style/custom_button_blue"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:text="Chọn" />-->
+        <!--</LinearLayout>-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/lbl_testing_type"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="5dp"-->
+        <!--android:text=""-->
+        <!--android:textColor="@color/color_black" />-->
+        <!--</LinearLayout>-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_price"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:drawableStart="@drawable/ic_attach_money_black_24dp"-->
+        <!--android:drawablePadding="10dp"-->
+        <!--android:hint="Giá tiền"-->
+        <!--android:imeOptions="actionNext"-->
+        <!--android:inputType="number"-->
+        <!--android:maxLines="1"-->
+        <!--android:singleLine="true"-->
+        <!--android:textSize="15dp"-->
+        <!--android:visibility="invisible" />-->
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="@dimen/margin_control"-->
+        <!--android:layoutDirection="ltr"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:paddingTop="20dp"-->
+        <!--android:weightSum="100">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_date_quickbook"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="30"-->
+        <!--android:clickable="true"-->
+        <!--android:drawableStart="@drawable/ic_date_range_black_24dp"-->
+        <!--android:drawablePadding="9dp"-->
+        <!--android:focusable="true"-->
+        <!--android:paddingStart="5dp"-->
+        <!--android:paddingEnd="5dp"-->
+        <!--android:text="@string/label_date_bookapt"-->
+        <!--android:textColor="@color/color_blue_grey_300"-->
+        <!--android:textSize="@dimen/edittext_size_medium" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_date_error_quickbook"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="70"-->
+        <!--android:clickable="true"-->
+        <!--android:drawablePadding="9dp"-->
+        <!--android:focusable="true"-->
+        <!--android:textColor="@color/color_red_500"-->
+        <!--android:textSize="11sp" />-->
+
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="@dimen/margin_control"-->
+        <!--android:layoutDirection="ltr"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:paddingTop="20dp"-->
+        <!--android:weightSum="100">-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_time_quickbook"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="30"-->
+        <!--android:clickable="true"-->
+        <!--android:drawableStart="@drawable/ic_access_time_black_24dp"-->
+        <!--android:drawablePadding="9dp"-->
+        <!--android:focusable="true"-->
+        <!--android:paddingStart="5dp"-->
+        <!--android:paddingEnd="5dp"-->
+        <!--android:text="@string/label_time_bookapt"-->
+        <!--android:textColor="@color/color_blue_grey_300"-->
+        <!--android:textSize="@dimen/edittext_size_medium" />-->
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_time_error_quickbook"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="70"-->
+        <!--android:clickable="true"-->
+        <!--android:drawablePadding="9dp"-->
+        <!--android:focusable="true"-->
+        <!--android:textColor="@color/color_red_500"-->
+        <!--android:textSize="11sp" />-->
+
+        <!--</LinearLayout>-->
+
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:layout_marginStart="3dp"-->
+        <!--android:layout_marginTop="3dp"-->
+        <!--android:layout_marginEnd="3dp"-->
+        <!--android:background="@color/color_grey_600" />-->
+
+
+        <!--</LinearLayout>-->
+        <Button
+            android:id="@+id/btn_book"
+            style="@style/custom_button_blue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="@string/label_button_bookapt" />
+
+    </RelativeLayout>
+
+</FrameLayout>
