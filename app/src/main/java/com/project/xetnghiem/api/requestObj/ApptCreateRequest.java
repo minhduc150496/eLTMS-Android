@@ -9,6 +9,9 @@ public class ApptCreateRequest implements Serializable {
 
     @SerializedName("PatientId")
     private int patientId;
+
+    @SerializedName("isOnl")
+    private boolean isOn = true;
 //    @SerializedName("GettingDate")
 //    private String gettingDate;//2018-11-04
     @SerializedName("SampleGettingDtos")
@@ -28,6 +31,14 @@ public class ApptCreateRequest implements Serializable {
 
     public void setList(List<SampleGettingDtos> list) {
         this.list = list;
+    }
+
+    public boolean isOn() {
+        return isOn;
+    }
+
+    public void setOn(boolean on) {
+        isOn = on;
     }
 
 //    public String getGettingDate() {

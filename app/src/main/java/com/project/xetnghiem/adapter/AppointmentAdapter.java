@@ -25,7 +25,8 @@ import java.util.List;
 
 public class AppointmentAdapter extends BaseAdapter {
     public static final int TYPE_NEW = 0;
-    public static final int TYPE_OLD = 1;
+    public static final int TYPE_DONE = 1;
+    public static final int TYPE_PROCESS = 2;
     private AppointmentAdapterListener appointmentAdapterListener;
 
     private Context context;
@@ -58,13 +59,15 @@ public class AppointmentAdapter extends BaseAdapter {
 
     @Override
     public int getViewTypeCount() {
-        return 2;
+        return 3;
     }
 
     @Override
     public int getItemViewType(int position) {
-        return ((Appointment) getItem(position))
-                .getStatus().equals(AppConst.APPOINTMENT_STATUS_NEW) ? TYPE_NEW : TYPE_OLD;
+      return (((Appointment) getItem(position))
+                .getStatus().equals(AppConst.APPOINTMENT_STATUS_NEW)) ? TYPE_NEW :
+              (((Appointment) getItem(position))
+                        .getStatus().equals(AppConst.APPOINTMENT_STATUS_DONE) ? TYPE_DONE : TYPE_PROCESS);
     }
 
     String tmp = "";
@@ -127,7 +130,7 @@ public class AppointmentAdapter extends BaseAdapter {
                 holder.txtStatus.setTextColor(ContextCompat.getColor(context, R.color.color_green_500));
                 view.setBackground(ContextCompat.getDrawable(context, R.drawable.border_left_positive));
                 break;
-            case TYPE_OLD:
+            case TYPE_DONE:
                 holder.btnView.setVisibility(View.VISIBLE);
                 holder.btnDelete.setVisibility(View.GONE);
                 holder.btnEdit.setVisibility(View.GONE);
@@ -135,6 +138,16 @@ public class AppointmentAdapter extends BaseAdapter {
                 holder.txtStatus.setTextColor(ContextCompat.getColor(context, R.color.color_deep_orange_500));
                 view.setBackground(ContextCompat.getDrawable(context, R.drawable.border_left_negative));
                 break;
+            case TYPE_PROCESS:
+                holder.btnView.setVisibility(View.GONE);
+                holder.btnDelete.setVisibility(View.GONE);
+                holder.btnEdit.setVisibility(View.GONE);
+                holder.btnDetail.setVisibility(View.GONE);
+                holder.txtStatus.setText("Đang xử lí");
+                holder.txtStatus.setTextColor(ContextCompat.getColor(context, R.color.color_blue_grey_300));
+                view.setBackground(ContextCompat.getDrawable(context, R.drawable.border_left_neutral));
+                break;
+
         }
         if (holder.txtAppointmentCode != null) {
             holder.txtAppointmentCode.setText("Mã: " + appointment.getAppointmentCode());
