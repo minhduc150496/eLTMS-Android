@@ -93,7 +93,7 @@ public class AppointmentResultActivity extends BaseActivity {
             return;
         }
         APIServiceManager.getService(ResultService.class)
-                .getByAppointment(9)
+                .getByAppointment(apptId)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new MySingleObserver<ResultOfAppointmentDto>(this) {

@@ -8,19 +8,14 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.gson.annotations.SerializedName;
 import com.project.xetnghiem.R;
 import com.project.xetnghiem.adapter.CustomViewPager;
-import com.project.xetnghiem.fragment.BookStep1Fragment;
-import com.project.xetnghiem.fragment.BookStep2Fragment;
 import com.project.xetnghiem.fragment.EditApptStep1Fragment;
 import com.project.xetnghiem.fragment.EditApptStep2Fragment;
-import com.project.xetnghiem.fragment.NewAppointmentFragment;
 import com.project.xetnghiem.models.Appointment;
 import com.project.xetnghiem.models.LabTest;
 import com.project.xetnghiem.models.SampleDto;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +31,7 @@ public class EditAppointmentActivity extends BaseActivity implements EditApptSte
     private List<SampleDto> listTmpSampleDto;
     private Button btnNextStep;
     private Button btnPrevStep;
-    private ArrayList<Integer> listLabTestIds = null;
+    //private ArrayList<Integer> listLabTestIds = null;
     private Appointment modifiedAppointment = null;
 
     @Override
@@ -92,10 +87,10 @@ public class EditAppointmentActivity extends BaseActivity implements EditApptSte
         fragment1 = new EditApptStep1Fragment();
         fragment2 = new EditApptStep2Fragment();
         Intent intent = getIntent();
-        listLabTestIds = intent.getIntegerArrayListExtra(NewAppointmentFragment.LIST_LABTEST_ID);
+       // listLabTestIds = intent.getIntegerArrayListExtra(NewAppointmentFragment.LIST_LABTEST_ID);
         Bundle b = intent.getExtras();
         modifiedAppointment =(Appointment)b.get(ShowAppointmentActivity.LIST_APPT_DETAIL);
-        fragment1.setListLabTestIds(listLabTestIds);
+        //fragment1.setListLabTestIds(listLabTestIds);
         fragment1.setModifiedAppt(modifiedAppointment);
         adapter.addFrag(fragment1, "1");
         adapter.addFrag(fragment2, "2");

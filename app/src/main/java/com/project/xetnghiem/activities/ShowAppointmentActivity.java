@@ -102,7 +102,7 @@ public class ShowAppointmentActivity extends BaseActivity implements Appointment
     protected void callDataResource() {
         showLoading();
         APIServiceManager.getService(AppointmentService.class)
-                .getPatientAppointment(71)
+                .getPatientAppointment(145)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new MySingleObserver<List<Appointment>>(this) {
@@ -142,7 +142,8 @@ public class ShowAppointmentActivity extends BaseActivity implements Appointment
     public void onViewClick(View v, Appointment appt, int position) {
         Intent intentShow = new Intent(ShowAppointmentActivity.this,
                 AppointmentResultActivity.class);
-        intentShow.putExtra(APPT_ID, appt.getAppointmentId());
+        //intentShow.putExtra(APPT_ID, appt.getAppointmentId());
+        intentShow.putExtra(APPT_ID,418);
         startActivity(intentShow);
     }
 

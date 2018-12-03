@@ -162,7 +162,7 @@ public class BookStep2Fragment extends BaseFragment {
 
     public void callApiBookAppointment() {
         ApptCreateRequest request = new ApptCreateRequest();
-        request.setPatientId(71);
+        request.setPatientId(145);
 
         List<ApptCreateRequest.SampleGettingDtos> list = new ArrayList<>();
         for (SampleDto dto : listSampleDto) {
