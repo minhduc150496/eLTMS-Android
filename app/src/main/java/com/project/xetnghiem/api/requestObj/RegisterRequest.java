@@ -1,16 +1,24 @@
 package com.project.xetnghiem.api.requestObj;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class RegisterRequest implements Serializable{
-    private int id;
+    //    @SerializedName("address")
+//    private String address;
+    @SerializedName("PhoneNumber")
     private String phone;
-    private String name;
-    private String address;
+    @SerializedName("FullName")
+    private String fullName;
+    @SerializedName("Password")
     private String password;
-    private String gender;
-    private int districtId;
-    private String birthday;
+    @SerializedName("Email")
+    private String email;
+    @SerializedName("AvatarURL")
+    private String avatar;
+    @SerializedName("IdentityCardNumber")
+    private String identityCardNumber;
 
    public String getPhone() {
         return phone;
@@ -20,12 +28,12 @@ public class RegisterRequest implements Serializable{
         this.phone = phone;
     }
 
-    public String getAddress() {
-        return address;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getPassword() {
@@ -36,43 +44,27 @@ public class RegisterRequest implements Serializable{
         this.password = password;
     }
 
-    public String getGender() {
-        return gender;
+    public String getEmail() {
+        return email;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getDistrictId() {
-        return districtId;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setDistrictId(int districtId) {
-        this.districtId = districtId;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
-    public String getBirthday() {
-        return birthday;
+    public String getIdentityCardNumber() {
+        return identityCardNumber;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setIdentityCardNumber(String identityCardNumber) {
+        this.identityCardNumber = identityCardNumber;
     }
 }

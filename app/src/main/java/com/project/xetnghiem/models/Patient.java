@@ -7,22 +7,22 @@ import java.util.List;
 public class Patient {
     @SerializedName("id")
     private int id;
-    @SerializedName("name")
+    @SerializedName("FullName")
     private String name;
-    @SerializedName("address")
-    private String address;
-    @SerializedName("phone")
+//    @SerializedName("address")
+//    private String address;
+    @SerializedName("PhoneNumber")
     private String phone;
     @SerializedName("date_of_birth")
     private String dateOfBirth;
     @SerializedName("gender")
     private String gender;
-    @SerializedName("avatar")
+    @SerializedName("AvatarURL")
     private String avatar;
-    @SerializedName("district")
-    private District district;
-    @SerializedName("city")
-    private City city;
+    @SerializedName("Email")
+    private String email;
+    @SerializedName("IdentityCardNumber")
+    private String identityCardNumber;
 
     public int getId() {
         return id;
@@ -40,13 +40,13 @@ public class Patient {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
+//    public String getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(String address) {
+//        this.address = address;
+//    }
 
     public String getPhone() {
         return phone;
@@ -73,26 +73,26 @@ public class Patient {
     }
 
     public String getAvatar() {
-        return avatar;
+        return "http://eltms.azurewebsites.net" + avatar;
     }
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 
-    public District getDistrict() {
-        return district;
+    public String getEmail() {
+        return email;
     }
 
-    public void setDistrict(District district) {
-        this.district = district;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public City getCity() {
-        return city;
+    public String getIdentityCardNumber() {
+        return identityCardNumber;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public void setIdentityCardNumber(String identityCardNumber) {
+        this.identityCardNumber = identityCardNumber;
     }
 }

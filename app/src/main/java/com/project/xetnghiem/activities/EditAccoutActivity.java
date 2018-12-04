@@ -88,10 +88,7 @@ public class EditAccoutActivity extends BaseActivity implements View.OnClickList
                 if (city != null) {
                     spDistrict.setAdapter(new DistrictSpinnerAdapter(EditAccoutActivity.this,
                             android.R.layout.simple_spinner_item, cityDatabaseHelper.getDistrictOfCity(city.getId())));
-                    if (patient.getDistrict() != null) {
-                        spDistrict.setSelection(cityDatabaseHelper.getPositionDistrictById(patient.getDistrict()));
 
-                    }
                 }
             }
 
@@ -100,8 +97,6 @@ public class EditAccoutActivity extends BaseActivity implements View.OnClickList
 
             }
         });
-        if(patient.getCity()!=null){spCity.setSelection(cityDatabaseHelper.getPositionCityById(patient.getCity().getId()));}
-
     }
 
     @Override
@@ -131,9 +126,6 @@ public class EditAccoutActivity extends BaseActivity implements View.OnClickList
         if (patient != null) {
             if (patient.getName() != null) {
                 txtName.setText(patient.getName());
-            }
-            if (patient.getAddress() != null) {
-                txtAddress.setText(patient.getAddress());
             }
             if (patient.getDateOfBirth() != null) {
                 txtDateOfBirth.setText(patient.getDateOfBirth());

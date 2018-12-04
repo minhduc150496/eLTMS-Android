@@ -5,12 +5,10 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 public class LoginRequest implements Serializable {
-    @SerializedName("phone")
+    @SerializedName("PhoneNumber")
     private String phone;
-    @SerializedName("password")
+    @SerializedName("Password")
     private String password;
-    @SerializedName("noti_token")
-    private String notifToken;
 
     public String getPhone() {
         return phone;
@@ -28,12 +26,4 @@ public class LoginRequest implements Serializable {
         this.password = password;
     }
 
-
-    public String getNotifToken() {
-        return notifToken;
-    }
-
-    public void setNotifToken(String notifToken) {
-        this.notifToken = notifToken;
-    }
 }

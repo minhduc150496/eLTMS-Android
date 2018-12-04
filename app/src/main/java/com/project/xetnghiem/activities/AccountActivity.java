@@ -46,9 +46,9 @@ import retrofit2.Response;
 
 public class AccountActivity extends BaseActivity implements View.OnClickListener {
     public static int REQUEST_CHANGE_PASSWORD = 10000;
-    Button btnChangeAvatar, btnEdit, btnLogout, btnChangePhone, btnChangePassword;
+    Button btnChangeAvatar, btnEdit, btnLogout, btnChangePassword;
     CircleImageView cvAvatar;
-    TextView txtName, txtGender, txtPhone, txtAddress, txtDateOfBirth, txtAnamnesis;
+    TextView txtName, txtPhone,txtEmail,txtCardNumber;
     Patient patient;
 
     @Override
@@ -80,11 +80,9 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         btnChangePassword.setOnClickListener(this);
         cvAvatar = findViewById(R.id.img_avatar_user);
         txtName = findViewById(R.id.txt_name);
-        txtDateOfBirth = findViewById(R.id.txt_date_of_birth);
-        txtGender = findViewById(R.id.txt_gender);
         txtPhone = findViewById(R.id.txt_phone);
-        txtAddress = findViewById(R.id.txt_address);
-        txtAnamnesis = findViewById(R.id.txt_list_anamnesis);
+        txtEmail = findViewById(R.id.txt_email_account);
+        txtCardNumber = findViewById(R.id.txt_card_number);
     }
 
     @Override
@@ -94,7 +92,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
 //            callApiCheck(CoreManager.getPatient(this).getPhone());
             showMessage("Patient is null");
         } else {
-            updateUIData(CoreManager.getPatient(this));
+            updateUIData(p);
         }
 
     }
@@ -115,24 +113,13 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
             if (patient.getName() != null) {
                 txtName.setText(patient.getName());
             }
-            if (patient.getDateOfBirth() != null) {
-                txtDateOfBirth.setText(DateUtils.changeDateFormat(patient.getDateOfBirth(), DateTimeFormat.DATE_TIME_DB_2, DateTimeFormat.DATE_APP));
-            }
-            if (patient.getGender() != null) {
-                txtGender.setText(GenderUtils.toString(patient.getGender()));
+            if (patient.getEmail() != null) {
+                txtEmail.setText(patient.getEmail());
             }
             if (patient.getPhone() != null) {
                 txtPhone.setText(patient.getPhone());
-            }
-            if (patient.getAddress() != null) {
-                String address = patient.getAddress();
-                if (patient.getDistrict() != null) {
-                    address += ", " + patient.getDistrict().getName();
-                    if (patient.getCity() != null) {
-                        address += ", " + patient.getCity().getName();
-                    }
-                }
-                txtAddress.setText(address);
+            }if (patient.getIdentityCardNumber() != null) {
+                txtCardNumber.setText(patient.getIdentityCardNumber());
             }
         }
     }

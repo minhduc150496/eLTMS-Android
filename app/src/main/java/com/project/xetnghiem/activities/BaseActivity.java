@@ -98,17 +98,19 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
             }
 
         });//set visible item
-        if (this instanceof AccountActivity) {
-            btnAvatar.setVisibility(View.INVISIBLE);
-        } else {
-            btnAvatar.setVisibility(View.VISIBLE);
-        }
+
         if (this instanceof LoginActivity || this instanceof RegisterActivity || this instanceof AppointmentResultActivity) {
             btnNotification.setVisibility(View.INVISIBLE);
+            btnAvatar.setVisibility(View.INVISIBLE);
             hideNotiNumber();
         } else {
             btnNotification.setVisibility(View.VISIBLE);
             displayNotiNumber();
+        }
+        if (this instanceof LoginActivity || this instanceof RegisterActivity || this instanceof AccountActivity) {
+            btnAvatar.setVisibility(View.INVISIBLE);
+        } else {
+            btnAvatar.setVisibility(View.VISIBLE);
         }
         if (numNotification != 0) {
             setTextNotiNumber(numNotification);

@@ -30,7 +30,7 @@ public class Validation {
 
     public static boolean isPhoneValid(String phone) {
         //TODO: Replace this with your own logic
-        return phone.matches("^\\d{9,}$");
+        return phone.matches("^\\d{6,}$");
     }
 
     public static boolean isNullOrEmpty(String source) {
@@ -44,7 +44,7 @@ public class Validation {
         if (isNullOrEmpty(password)) {
             return false;
         }
-        return password.length() > 8;
+        return password.length() > 5;
     }
 
     public static boolean isNameValid(String name) {

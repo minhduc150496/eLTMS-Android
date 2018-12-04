@@ -10,18 +10,23 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.internal.LinkedTreeMap;
 import com.project.xetnghiem.R;
 import com.project.xetnghiem.api.APIServiceManager;
+import com.project.xetnghiem.api.MySingleObserver;
+import com.project.xetnghiem.api.requestObj.LoginRequest;
+import com.project.xetnghiem.api.responseObj.SuccessResponse;
 import com.project.xetnghiem.api.services.PatientService;
 import com.project.xetnghiem.models.Patient;
 import com.project.xetnghiem.utilities.CoreManager;
-import com.project.xetnghiem.utilities.GenderUtils;
 import com.project.xetnghiem.utilities.Validation;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import retrofit2.Call;
-import retrofit2.Callback;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Response;
 
 //import com.dentalclinic.capstone.firebase.FirebaseDataReceiver;
@@ -57,7 +62,25 @@ public class LoginActivity extends BaseActivity {
         tvLinkForgotPassword = findViewById(R.id.tv_link_forgot_password);
         mLoginFormView = findViewById(R.id.login_form);
         btnSingin = findViewById(R.id.btn_signin_loginact);
-        tvLinkRegister = findViewById(R.id.tv_link_quickregister);
+        tvLinkRegister = findViewById(R.id.tv_link_register);
+
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        ImageButton backBtn = toolbar.findViewById(R.id.btn_toolbar_back);
+        CircleImageView cicleAvatar = toolbar.findViewById(R.id.imgAvatar);
+        backBtn.setVisibility(View.INVISIBLE);
+        cicleAvatar.setVisibility(View.INVISIBLE);
+        tvLinkRegister.setOnClickListener((v) -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
+        });
+        btnSingin.setOnClickListener((view) ->
+        {
+            attemptLogin();
+//            showLoading();
+        });
+        txtPassword.clearFocus();
+        txtPhone.clearFocus();
     }
 
     @Override
@@ -81,27 +104,11 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        ImageButton backBtn = toolbar.findViewById(R.id.btn_toolbar_back);
-        CircleImageView cicleAvatar = toolbar.findViewById(R.id.imgAvatar);
-        backBtn.setVisibility(View.INVISIBLE);
-        cicleAvatar.setVisibility(View.INVISIBLE);
-        if (CoreManager.getPatient(this) != null && CoreManager.getPatient((this)).getPhone().equals("1234567789")) {
-            redirectToNurseMain();
-        } else if(CoreManager.getPatient(this)!=null){
+        if (CoreManager.getPatient(this) != null) {
             redirectToMain();
-        }
-        tvLinkRegister.setOnClickListener((v) -> {
-            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-            startActivity(intent);
-        });
-        btnSingin.setOnClickListener((view) ->
-        {
+        } else if (CoreManager.getPatient(this) == null) {
             attemptLogin();
-//            showLoading();
-        });
-        txtPassword.clearFocus();
-        txtPhone.clearFocus();
+        }
     }
 
 
@@ -112,7 +119,7 @@ public class LoginActivity extends BaseActivity {
         txtPassword.setError(null);
 
         // Store values at the time of the login attempt.
-        String username = txtPhone.getText().toString();
+        String phone = txtPhone.getText().toString();
         String password = txtPassword.getText().toString();
 
         boolean cancel = false;
@@ -120,7 +127,7 @@ public class LoginActivity extends BaseActivity {
 
         // Check for a valid password, if the user entered one.
 
-        if (!Validation.isUsernameValid(username)) {
+        if (!Validation.isPhoneValid(phone)) {
             txtPhone.setError(getString(R.string.error_invalid_phone));
             focusView = txtPhone;
             cancel = true;
@@ -134,7 +141,10 @@ public class LoginActivity extends BaseActivity {
             focusView.requestFocus();
             showMessage("Số điện thoại hoặc email không hợp lệ!");
         } else {
-            callApiLogin(username, password);
+            LoginRequest request = new LoginRequest();
+            request.setPhone(phone);
+            request.setPassword(password);
+            callApiLogin(request);
         }
     }
 
@@ -154,20 +164,44 @@ public class LoginActivity extends BaseActivity {
         return true;
     }
 
-    public void callApiLogin(String username, String password) {
+    public void callApiLogin(LoginRequest requestObj) {
+        showLoading();
+        APIServiceManager.getService(PatientService.class)
+                .login(requestObj)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new MySingleObserver<SuccessResponse>(this) {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                    }
 
-        Patient patient = new Patient();
-        patient.setAddress("VIet nam");
-        patient.setGender("FEMALE");
-        patient.setName("Pro");
-        patient.setPhone(txtPhone.getText().toString().trim());
-        patient.setId(1);
-        CoreManager.setPatient(this, patient);
-        if (txtPhone.getText().toString().trim().equals("123456789")) {
-            redirectToNurseMain();
-        } else {
-            redirectToMain();
-        }
+                    @Override
+                    protected void onResponseSuccess(Response<SuccessResponse> response) {
+                        if (response.body().isSuccess()) {
+                            Patient patient = parseToPatient(response.body().getData());
+                            CoreManager.setPatient(LoginActivity.this, patient);
+                            redirectToMain();
+                        } else {
+                            showMessage(response.body().getMessage());
+                        }
+                    }
+                });
+    }
+
+    private Patient parseToPatient(Object obj) {
+        LinkedTreeMap<Object, Object> t = (LinkedTreeMap) obj;
+        String name = t.get("FullName").toString();
+        String phoneNumber = t.get("PhoneNumber").toString();
+        String avatar = t.get("AvatarURL") == null ? "":t.get("AvatarURL").toString();
+        String email = t.get("Email").toString();
+        String cardNumber = t.get("IdentityCardNumber").toString();
+        Patient p = new Patient();
+        p.setName(name);
+        p.setPhone(phoneNumber);
+        p.setAvatar(avatar);
+        p.setEmail(email);
+        p.setIdentityCardNumber(cardNumber);
+        return p;
     }
 
     public void redirectToMain() {
@@ -176,11 +210,11 @@ public class LoginActivity extends BaseActivity {
         finish();
     }
 
-    public void redirectToNurseMain() {
-        Intent intent = new Intent(LoginActivity.this, DoneApptActivity.class);
-        startActivity(intent);
-        finish();
-    }
+//    public void redirectToNurseMain() {
+//        Intent intent = new Intent(LoginActivity.this, DoneApptActivity.class);
+//        startActivity(intent);
+//        finish();
+//    }
 
     @Override
     protected void onDestroy() {

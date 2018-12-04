@@ -1,5 +1,8 @@
 package com.project.xetnghiem.api.services;
 
+import com.project.xetnghiem.activities.RegisterActivity;
+import com.project.xetnghiem.api.requestObj.LoginRequest;
+import com.project.xetnghiem.api.requestObj.RegisterRequest;
 import com.project.xetnghiem.api.requestObj.UpdatePatientRequest;
 import com.project.xetnghiem.api.responseObj.SuccessResponse;
 
@@ -18,6 +21,10 @@ import retrofit2.http.Query;
 public interface PatientService {
     @POST("api/patient/update")
 Single<Response<SuccessResponse>> changePatientInfo(@Body UpdatePatientRequest request);
+    @POST("api/account/register-patient")
+Single<Response<SuccessResponse>> register(@Body RegisterRequest request);
+    @POST("api/account/login-patient")
+Single<Response<SuccessResponse>> login(@Body LoginRequest request);
     @Multipart
     @POST("api/patient/changeAvatar")
     Single<Response<SuccessResponse>> changeAvatar(
