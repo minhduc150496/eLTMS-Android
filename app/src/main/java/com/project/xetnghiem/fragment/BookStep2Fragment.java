@@ -21,8 +21,10 @@ import com.project.xetnghiem.api.requestObj.ApptCreateRequest;
 import com.project.xetnghiem.api.responseObj.SuccessResponse;
 import com.project.xetnghiem.api.services.BookApptService;
 import com.project.xetnghiem.models.LabTest;
+import com.project.xetnghiem.models.Patient;
 import com.project.xetnghiem.models.SampleDto;
 import com.project.xetnghiem.models.Slot;
+import com.project.xetnghiem.utilities.CoreManager;
 import com.project.xetnghiem.utilities.DateTimeFormat;
 import com.project.xetnghiem.utilities.DateUtils;
 import com.project.xetnghiem.utilities.Validation;
@@ -162,7 +164,8 @@ public class BookStep2Fragment extends BaseFragment {
 
     public void callApiBookAppointment() {
         ApptCreateRequest request = new ApptCreateRequest();
-        request.setPatientId(145);
+        Patient patient = CoreManager.getPatient(getContext());
+        request.setPatientId(patient.getId());
 
         List<ApptCreateRequest.SampleGettingDtos> list = new ArrayList<>();
         for (SampleDto dto : listSampleDto) {

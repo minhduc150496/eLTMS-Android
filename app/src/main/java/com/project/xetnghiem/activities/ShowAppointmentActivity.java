@@ -24,9 +24,12 @@ import com.project.xetnghiem.api.responseObj.SuccessResponse;
 import com.project.xetnghiem.api.services.AppointmentService;
 import com.project.xetnghiem.models.Appointment;
 import com.project.xetnghiem.models.AppointmentDetail;
+import com.project.xetnghiem.models.Patient;
+import com.project.xetnghiem.utilities.CoreManager;
 import com.project.xetnghiem.utilities.Utils;
 
 import java.io.Serializable;
+import java.nio.charset.CoderResult;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -101,8 +104,13 @@ public class ShowAppointmentActivity extends BaseActivity implements Appointment
     @Override
     protected void callDataResource() {
         showLoading();
+        Patient patient = CoreManager.getPatient(this);
+        if (patient == null) {
+            showMessage("Patient null");
+            return;
+        }
         APIServiceManager.getService(AppointmentService.class)
-                .getPatientAppointment(145)
+                .getPatientAppointment(patient.getId())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new MySingleObserver<List<Appointment>>(this) {
@@ -113,10 +121,12 @@ public class ShowAppointmentActivity extends BaseActivity implements Appointment
 
                                @Override
                                protected void onResponseSuccess(Response<List<Appointment>> listResponse) {
-                                   if (listResponse.body() != null) {
+                                   if (listResponse.body() != null && listResponse.body().size()>0) {
                                        listAppointment.clear();
                                        listAppointment.addAll(listResponse.body());
                                        adapter.notifyDataSetChanged();
+                                   }else{
+                                       showMessage("Không có dữ liệu");
                                    }
 
                                }
@@ -142,8 +152,8 @@ public class ShowAppointmentActivity extends BaseActivity implements Appointment
     public void onViewClick(View v, Appointment appt, int position) {
         Intent intentShow = new Intent(ShowAppointmentActivity.this,
                 AppointmentResultActivity.class);
-        //intentShow.putExtra(APPT_ID, appt.getAppointmentId());
-        intentShow.putExtra(APPT_ID,418);
+        intentShow.putExtra(APPT_ID, appt.getAppointmentId());
+//        intentShow.putExtra(APPT_ID,418);
         startActivity(intentShow);
     }
 
