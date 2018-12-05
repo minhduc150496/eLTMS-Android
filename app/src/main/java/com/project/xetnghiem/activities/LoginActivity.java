@@ -196,8 +196,7 @@ public class LoginActivity extends BaseActivity {
         String avatar = t.get("AvatarURL") == null ? "":t.get("AvatarURL").toString();
         String email = t.get("Email").toString();
         String cardNumber = t.get("IdentityCardNumber").toString();
-        String a =t.get("PatienId").toString();
-        int patientId =(int) Double.parseDouble(t.get("PatienId").toString());
+        int patientId =(int) Double.parseDouble(t.get("PatientId").toString());
         Patient p = new Patient();
         p.setName(name);
         p.setPhone(phoneNumber);

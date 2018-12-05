@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class Patient {
-    @SerializedName("PatienId")
+    @SerializedName("PatientId")
     private int id;
     @SerializedName("FullName")
     private String name;
