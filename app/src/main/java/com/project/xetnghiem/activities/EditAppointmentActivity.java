@@ -31,7 +31,7 @@ public class EditAppointmentActivity extends BaseActivity implements EditApptSte
     private List<SampleDto> listTmpSampleDto;
     private Button btnNextStep;
     private Button btnPrevStep;
-    //private ArrayList<Integer> listLabTestIds = null;
+    private ArrayList<Integer> listLabTestIds = null;
     private Appointment modifiedAppointment = null;
 
     @Override
@@ -87,10 +87,10 @@ public class EditAppointmentActivity extends BaseActivity implements EditApptSte
         fragment1 = new EditApptStep1Fragment();
         fragment2 = new EditApptStep2Fragment();
         Intent intent = getIntent();
-       // listLabTestIds = intent.getIntegerArrayListExtra(NewAppointmentFragment.LIST_LABTEST_ID);
+        listLabTestIds = intent.getIntegerArrayListExtra(ShowAppointmentActivity.LIST_LABTEST_ID);
         Bundle b = intent.getExtras();
         modifiedAppointment =(Appointment)b.get(ShowAppointmentActivity.LIST_APPT_DETAIL);
-        //fragment1.setListLabTestIds(listLabTestIds);
+        fragment1.setListLabTestIds(listLabTestIds);
         fragment1.setModifiedAppt(modifiedAppointment);
         adapter.addFrag(fragment1, "1");
         adapter.addFrag(fragment2, "2");
