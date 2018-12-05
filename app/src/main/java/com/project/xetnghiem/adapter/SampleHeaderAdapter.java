@@ -99,7 +99,7 @@ public class SampleHeaderAdapter extends BaseAdapter {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                     labTest.setChecked(b);
-                    onChangeChkListener.onChange(labTest.getLabTestId(), b);
+                    onChangeChkListener.onChange(labTest, b);
                 }
             });
         }
@@ -112,6 +112,6 @@ public class SampleHeaderAdapter extends BaseAdapter {
     }
  public  OnChangeChkListener onChangeChkListener;
     public interface OnChangeChkListener{
-        void onChange(int position, boolean status);
+        void onChange(LabTest labTest, boolean status);
     }
 }

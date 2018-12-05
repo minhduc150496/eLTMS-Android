@@ -139,7 +139,7 @@ public class LoginActivity extends BaseActivity {
 
         if (cancel) {
             focusView.requestFocus();
-            showMessage("Số điện thoại hoặc email không hợp lệ!");
+            showMessage("Số điện thoại không hợp lệ!");
         } else {
             LoginRequest request = new LoginRequest();
             request.setPhone(phone);
@@ -179,6 +179,7 @@ public class LoginActivity extends BaseActivity {
                     protected void onResponseSuccess(Response<SuccessResponse> response) {
                         if (response.body().isSuccess()) {
                             Patient patient = parseToPatient(response.body().getData());
+                            CoreManager.clearPatient(LoginActivity.this);
                             CoreManager.setPatient(LoginActivity.this, patient);
                             redirectToMain();
                         } else {
@@ -195,11 +196,14 @@ public class LoginActivity extends BaseActivity {
         String avatar = t.get("AvatarURL") == null ? "":t.get("AvatarURL").toString();
         String email = t.get("Email").toString();
         String cardNumber = t.get("IdentityCardNumber").toString();
+        String a =t.get("PatienId").toString();
+        int patientId =(int) Double.parseDouble(t.get("PatienId").toString());
         Patient p = new Patient();
         p.setName(name);
         p.setPhone(phoneNumber);
         p.setAvatar(avatar);
         p.setEmail(email);
+        p.setId(patientId);
         p.setIdentityCardNumber(cardNumber);
         return p;
     }

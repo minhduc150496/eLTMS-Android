@@ -73,11 +73,12 @@ public class BookStep1Fragment extends BaseFragment {
         dataListener = (DataListener) getActivity();
         adapter = new SampleHeaderAdapter(getContext(), listLabTest, new SampleHeaderAdapter.OnChangeChkListener() {
             @Override
-            public void onChange(int id, boolean status) {
+            public void onChange(LabTest labTest, boolean status) {
                 if (status) {
-                    tmpLabTest.add(getLabtest(id));
+//                    tmpLabTest.add(getLabtest(id));
+                    tmpLabTest.add(labTest);
                 } else {
-                    tmpLabTest.remove(findLabtestPos(id));
+                    tmpLabTest.remove(findLabtestPos(labTest.getLabTestId()));
                 }
                 filterSampleDto();
                 filterSuggestionTime();
