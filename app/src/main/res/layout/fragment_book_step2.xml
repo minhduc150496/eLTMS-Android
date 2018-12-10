@@ -185,7 +185,7 @@
             android:layout_alignParentBottom="true"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:text="Sửa lịch" />
+            android:text="Đặt lịch" />
 
     </RelativeLayout>
 
