@@ -18,6 +18,8 @@ public interface AppointmentService {
 
     @GET("api/appointment/get-appointments-by-patient-id")
     Single<Response<List<Appointment>>> getPatientAppointment(@Query("patientId") int patientId);
+@GET("api/appointment/get-results-by-account-id?")
+    Single<Response<List<Appointment>>> getAccountAppointment(@Query("accountId") int accountId);
 
     @GET("api/appointment/get-new-appointments-by-patient-id")
     Single<Response<List<Appointment>>> getNewApptByPatientId(@Query("patientId") int patientId);

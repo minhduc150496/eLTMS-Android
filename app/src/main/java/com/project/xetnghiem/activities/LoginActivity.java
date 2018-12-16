@@ -191,12 +191,14 @@ public class LoginActivity extends BaseActivity {
         LinkedTreeMap<Object, Object> t = (LinkedTreeMap) obj;
         String name = t.get("FullName") == null ? "" : t.get("FullName").toString();
         String phoneNumber = t.get("PhoneNumber").toString();
+        int accId =  (int) Double.parseDouble((t.get("AccountId") == null) ? "0" : t.get("AccountId").toString());
         String avatar = t.get("AvatarURL") == null ? "" : t.get("AvatarURL").toString();
         String email = t.get("Email") == null ? "" : t.get("Email").toString();
         String cardNumber = t.get("IdentityCardNumber") == null ? "" : t.get("IdentityCardNumber").toString();
         int patientId = (int) Double.parseDouble(t.get("PatientId").toString());
         Patient p = new Patient();
         p.setName(name);
+        p.setAccountId(accId);
         p.setPhone(phoneNumber);
         p.setAvatar(avatar);
         p.setEmail(email);

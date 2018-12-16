@@ -110,7 +110,7 @@ public class ShowAppointmentActivity extends BaseActivity implements Appointment
             return;
         }
         APIServiceManager.getService(AppointmentService.class)
-                .getPatientAppointment(patient.getId())
+                .getAccountAppointment(patient.getAccountId())
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new MySingleObserver<List<Appointment>>(this) {

@@ -5,8 +5,11 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class Patient {
+
     @SerializedName("PatientId")
     private int id;
+    @SerializedName("AccountId")
+    private int accountId;
     @SerializedName("FullName")
     private String name;
 //    @SerializedName("address")
@@ -94,5 +97,13 @@ public class Patient {
 
     public void setIdentityCardNumber(String identityCardNumber) {
         this.identityCardNumber = identityCardNumber;
+    }
+
+    public int getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 }
