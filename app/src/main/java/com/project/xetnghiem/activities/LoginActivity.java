@@ -106,8 +106,6 @@ public class LoginActivity extends BaseActivity {
 
         if (CoreManager.getPatient(this) != null) {
             redirectToMain();
-        } else if (CoreManager.getPatient(this) == null) {
-            attemptLogin();
         }
     }
 
