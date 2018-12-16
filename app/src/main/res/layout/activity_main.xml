@@ -21,14 +21,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="130dp"
             android:orientation="horizontal"
             android:weightSum="2">
 
             <RelativeLayout
                 android:id="@+id/grid_book_appt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@color/color_main_background"
@@ -58,7 +58,7 @@
             <RelativeLayout
                 android:id="@+id/grid_account"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@color/color_main_background"
@@ -90,14 +90,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="130dp"
             android:orientation="horizontal"
             android:weightSum="2">
 
             <RelativeLayout
                 android:id="@+id/grid_appt_history"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@color/color_main_background"
@@ -127,7 +127,7 @@
             <RelativeLayout
                 android:id="@+id/grid_result"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="2dp"
                 android:layout_weight="1"
                 android:background="@color/color_main_background"

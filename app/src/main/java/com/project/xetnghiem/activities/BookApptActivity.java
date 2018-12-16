@@ -88,7 +88,14 @@ public class BookApptActivity extends BaseActivity implements BookStep1Fragment.
                 if (currentPos > 2) {
                     currentPos = 2;
                 }
-                viewPager.setCurrentItem(currentPos);
+                if(currentPos == 1){
+                    ApptPatientDto patientDto = fragment0.getPatientDto();
+                    if (patientDto == null) {
+                        fragment0.triggerValidation();
+                        currentPos = 0;
+                        return;
+                    }
+                }
                 if (currentPos == 2) {
                     btnNextStep.setVisibility(View.INVISIBLE);
                     setBtnText("Bước 2", "Bước 3");
@@ -101,11 +108,13 @@ public class BookApptActivity extends BaseActivity implements BookStep1Fragment.
                     ApptPatientDto patientDto = fragment0.getPatientDto();
                     if (patientDto == null) {
                         fragment0.triggerValidation();
+                        return;
                     } else {
                         fragment2.setPatientDto(patientDto);
                     }
                 }
                 btnPrevStep.setVisibility(View.VISIBLE);
+                viewPager.setCurrentItem(currentPos);
             }
         });
         btnPrevStep.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +124,7 @@ public class BookApptActivity extends BaseActivity implements BookStep1Fragment.
                 if (currentPos < 0) {
                     currentPos = 0;
                 }
-                viewPager.setCurrentItem(currentPos);
+//                viewPager.setCurrentItem(currentPos);
                 if (currentPos == 0) {
                     btnPrevStep.setVisibility(View.INVISIBLE);
                     setBtnText("Bước 1", "Bước 2");
@@ -124,6 +133,7 @@ public class BookApptActivity extends BaseActivity implements BookStep1Fragment.
                     setBtnText("Bước 1", "Bước 3");
                 }
                 btnNextStep.setVisibility(View.VISIBLE);
+                viewPager.setCurrentItem(currentPos);
             }
         });
         if (listAvailableSlots == null) {

@@ -34,6 +34,7 @@ public class BookStep0Fragment extends BaseFragment {
     private ApptPatientDto patientDto;
     private String selectedGender;
     private boolean validationError = true;
+
     public BookStep0Fragment() {
         // Required empty public constructor
     }
@@ -119,32 +120,33 @@ public class BookStep0Fragment extends BaseFragment {
     }
 
     public void triggerValidation() {
-        String fullname = txtHomeAddress.getText().toString();
+        String fullname = txtFulname.getText().toString();
         String dateOfBirth = txtDateOfBirth.getText().toString();
         String gender = getGenderValue(rgGender.getCheckedRadioButtonId());
         String address = txtHomeAddress.getText().toString();
         String phoneNumber = txtPhoneNumber.getText().toString();
         if (Validation.isNullOrEmpty(fullname)) {
             showMessage("Vui lòng nhập tên");
-        } else if (Validation.isNullOrEmpty(dateOfBirth)) {
+        } else if (Validation.isNullOrEmpty(dateOfBirth) || dateOfBirth.equals("Ngày sinh")) {
             showMessage("Vui lòng chọn ngày sinh");
         } else if (Validation.isNullOrEmpty(gender)) {
             showMessage("Vui lòng chọn giới tính");
-        } else if (Validation.isNullOrEmpty(address)) {
-            showMessage("Vui lòng nhập địa chỉ");
         } else if (Validation.isNullOrEmpty(phoneNumber)) {
             showMessage("Vui lòng nhập số điện thoại");
+        } else if (Validation.isNullOrEmpty(address)) {
+            showMessage("Vui lòng nhập địa chỉ");
         }
     }
 
     public ApptPatientDto getPatientDto() {
-        String fullname = txtHomeAddress.getText().toString();
+        String fullname = txtFulname.getText().toString();
         String dateOfBirth = txtDateOfBirth.getText().toString();
         String gender = getGenderValue(rgGender.getCheckedRadioButtonId());
         String address = txtHomeAddress.getText().toString();
         String phoneNumber = txtPhoneNumber.getText().toString();
         if (Validation.isNullOrEmpty(fullname) ||
                 Validation.isNullOrEmpty(dateOfBirth) ||
+                dateOfBirth.equals("Ngày sinh") ||
                 Validation.isNullOrEmpty(gender) ||
                 Validation.isNullOrEmpty(address) ||
                 Validation.isNullOrEmpty(phoneNumber)) return null;

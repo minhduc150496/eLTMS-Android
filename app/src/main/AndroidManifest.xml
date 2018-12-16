@@ -25,7 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.FeedbackActivity" />
-        <activity android:name=".activities.BookApptActivity" />
+        <activity android:name=".activities.BookApptActivity"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.EditAccoutActivity" />
         <activity android:name=".activities.EditPasswordActivity" />
