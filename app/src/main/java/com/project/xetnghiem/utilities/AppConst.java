@@ -14,9 +14,9 @@ public class AppConst {
     public final static String DEBUG_TAG = "DEBUG_TAG";
     public final static String DEBUG_CORE_TAG = "DEBUG_CORE_TAG";
 
-    public final static String GENDER_MALE = "MALE";
-    public final static String GENDER_FEMALE = "FEMALE";
-    public final static String GENDER_OTHER = "OTHER";
+    public final static String GENDER_MALE = "Male";
+    public final static String GENDER_FEMALE = "Female";
+    public final static String GENDER_OTHER = "Other";
 
     public final static int DEFAULT_BIRTHDAY_YEAR = 2000;
     public final static int REQUEST_CREATENEW_PATIENT = 909;

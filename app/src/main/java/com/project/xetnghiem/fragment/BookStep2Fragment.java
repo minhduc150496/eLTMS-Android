@@ -18,6 +18,7 @@ import com.project.xetnghiem.adapter.BookSampleAdapter;
 import com.project.xetnghiem.api.APIServiceManager;
 import com.project.xetnghiem.api.MySingleObserver;
 import com.project.xetnghiem.api.requestObj.ApptCreateRequest;
+import com.project.xetnghiem.api.requestObj.ApptPatientDto;
 import com.project.xetnghiem.api.responseObj.SuccessResponse;
 import com.project.xetnghiem.api.services.BookApptService;
 import com.project.xetnghiem.models.LabTest;
@@ -52,6 +53,7 @@ public class BookStep2Fragment extends BaseFragment {
     private BookSampleAdapter adapter;
     private List<SampleDto> listSampleDto;
     private List<Slot> availableSlots;
+    private  ApptPatientDto patientDto;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -104,9 +106,13 @@ public class BookStep2Fragment extends BaseFragment {
         adapter.notifyDataSetChanged();
     }
 
+    public void setPatientDto(ApptPatientDto dto){
+        patientDto = dto;
+    }
+
     public void setAvailableSlots(List<Slot> list) {
-        availableSlots.clear();
-        this.availableSlots.addAll(list);
+//        availableSlots.clear();
+//        this.availableSlots.addAll(list);
     }
 
     @Override
@@ -165,7 +171,7 @@ public class BookStep2Fragment extends BaseFragment {
     public void callApiBookAppointment() {
         ApptCreateRequest request = new ApptCreateRequest();
         Patient patient = CoreManager.getPatient(getContext());
-        request.setPatientId(patient.getId());
+        request.setPatientDto(patientDto);
 
         List<ApptCreateRequest.SampleGettingDtos> list = new ArrayList<>();
         for (SampleDto dto : listSampleDto) {

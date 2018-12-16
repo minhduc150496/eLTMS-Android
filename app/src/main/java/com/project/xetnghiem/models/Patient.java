@@ -13,9 +13,9 @@ public class Patient {
 //    private String address;
     @SerializedName("PhoneNumber")
     private String phone;
-    @SerializedName("date_of_birth")
+    @SerializedName("DateOfBirth")
     private String dateOfBirth;
-    @SerializedName("gender")
+    @SerializedName("Gender")
     private String gender;
     @SerializedName("AvatarURL")
     private String avatar;

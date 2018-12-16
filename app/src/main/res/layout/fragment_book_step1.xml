@@ -14,7 +14,9 @@
          <TextView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:text="Bước 1/2: Chọn loại xét nghiệm:"
+             android:layout_marginLeft="16dp"
+             android:layout_marginTop="10dp"
+             android:text="Bước 2/3: Chọn loại xét nghiệm:"
              android:textStyle="bold"
              android:textSize="@dimen/label_size_big"
              />

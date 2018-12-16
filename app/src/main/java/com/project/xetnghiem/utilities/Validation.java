@@ -34,10 +34,7 @@ public class Validation {
     }
 
     public static boolean isNullOrEmpty(String source) {
-        if (source != null && !source.isEmpty()) {
-            return false;
-        }
-        return true;
+        return source == null || source.isEmpty();
     }
 
     public static boolean isPasswordValid(String password) {

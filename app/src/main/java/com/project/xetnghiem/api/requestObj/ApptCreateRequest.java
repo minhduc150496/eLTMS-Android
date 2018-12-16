@@ -7,8 +7,8 @@ import java.util.List;
 
 public class ApptCreateRequest implements Serializable {
 
-    @SerializedName("PatientId")
-    private int patientId;
+    @SerializedName("PatientDto")
+    private ApptPatientDto patientDto;
 
     @SerializedName("IsOnline")
     private boolean isOn = true;
@@ -16,14 +16,6 @@ public class ApptCreateRequest implements Serializable {
 //    private String gettingDate;//2018-11-04
     @SerializedName("SampleGettingDtos")
     private List<SampleGettingDtos> list;
-
-    public int getPatientId() {
-        return patientId;
-    }
-
-    public void setPatientId(int patientId) {
-        this.patientId = patientId;
-    }
 
     public List<SampleGettingDtos> getList() {
         return list;
@@ -39,6 +31,14 @@ public class ApptCreateRequest implements Serializable {
 
     public void setOn(boolean on) {
         isOn = on;
+    }
+
+    public ApptPatientDto getPatientDto() {
+        return patientDto;
+    }
+
+    public void setPatientDto(ApptPatientDto patientDto) {
+        this.patientDto = patientDto;
     }
 
 //    public String getGettingDate() {

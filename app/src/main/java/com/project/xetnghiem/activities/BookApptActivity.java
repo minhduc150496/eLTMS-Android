@@ -10,7 +10,9 @@ import android.widget.Button;
 import com.project.xetnghiem.R;
 import com.project.xetnghiem.adapter.CustomViewPager;
 import com.project.xetnghiem.api.APIServiceManager;
+import com.project.xetnghiem.api.requestObj.ApptPatientDto;
 import com.project.xetnghiem.api.services.SlotService;
+import com.project.xetnghiem.fragment.BookStep0Fragment;
 import com.project.xetnghiem.fragment.BookStep1Fragment;
 import com.project.xetnghiem.fragment.BookStep2Fragment;
 import com.project.xetnghiem.models.LabTest;
@@ -38,6 +40,7 @@ public class BookApptActivity extends BaseActivity implements BookStep1Fragment.
     private List<Slot> listAvailableSlots;
     private Button btnNextStep;
     private Button btnPrevStep;
+    private int currentPos = 0;
 
     @Override
     protected int getLayoutView() {
@@ -47,29 +50,6 @@ public class BookApptActivity extends BaseActivity implements BookStep1Fragment.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        ActionBar actionBar = getSupportActionBar();
-//        if (actionBar != null) {
-//            actionBar.setDisplayHomeAsUpEnabled(true);
-//            getSupportActionBar().setBackgroundDrawable(
-//                    ContextCompat.getDrawable(BookApptActivity.this, R.drawable.side_nav_bar)
-//            );
-//        }
-//        TelephonyManager tMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_NUMBERS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-//            // TODO: Consider calling
-//            //    ActivityCompat#requestPermissions
-//            // here to request the missing permissions, and then overriding
-//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-//            //                                          int[] grantResults)
-//            // to handle the case where the user grants the permission. See the documentation
-//            // for ActivityCompat#requestPermissions for more details.
-//            return;
-//        }
-//        String mPhoneNumber = tMgr.getLine1Number();
-//        tvPhone.setText(mPhoneNumber);
-//        img.requestFocus();
-//        tvFullname.clearFocus();
-
         tmpLabTest = new ArrayList<>();
         listTmpSampleDto = new ArrayList<>();
 
@@ -80,6 +60,7 @@ public class BookApptActivity extends BaseActivity implements BookStep1Fragment.
         return "Đặt lịch";
     }
 
+    BookStep0Fragment fragment0;
     BookStep1Fragment fragment1;
     BookStep2Fragment fragment2;
 
@@ -89,30 +70,60 @@ public class BookApptActivity extends BaseActivity implements BookStep1Fragment.
         btnNextStep = findViewById(R.id.btn_next_step);
         btnPrevStep = findViewById(R.id.btn_prev_step);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        fragment0 = new BookStep0Fragment();
         fragment1 = new BookStep1Fragment();
         fragment2 = new BookStep2Fragment();
+        adapter.addFrag(fragment0, "0");
         adapter.addFrag(fragment1, "1");
         adapter.addFrag(fragment2, "2");
+        viewPager.setCurrentItem(0);
         viewPager.setAdapter(adapter);
         viewPager.setPagingEnabled(false);
         btnPrevStep.setVisibility(View.INVISIBLE);
+        btnNextStep.setVisibility(View.VISIBLE);
         btnNextStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewPager.setCurrentItem(1);
-                if (fragment2 != null) {
+                currentPos++;
+                if (currentPos > 2) {
+                    currentPos = 2;
+                }
+                viewPager.setCurrentItem(currentPos);
+                if (currentPos == 2) {
+                    btnNextStep.setVisibility(View.INVISIBLE);
+                    setBtnText("Bước 2", "Bước 3");
+                } else {
+                    btnNextStep.setVisibility(View.VISIBLE);
+                    setBtnText("Bước 1", "Bước 3");
+                }
+                if (fragment2 != null && currentPos == 2) {
                     fragment2.setDataSample(listTmpSampleDto);
+                    ApptPatientDto patientDto = fragment0.getPatientDto();
+                    if (patientDto == null) {
+                        fragment0.triggerValidation();
+                    } else {
+                        fragment2.setPatientDto(patientDto);
+                    }
                 }
                 btnPrevStep.setVisibility(View.VISIBLE);
-                btnNextStep.setVisibility(View.INVISIBLE);
             }
         });
         btnPrevStep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewPager.setCurrentItem(0);
+                currentPos--;
+                if (currentPos < 0) {
+                    currentPos = 0;
+                }
+                viewPager.setCurrentItem(currentPos);
+                if (currentPos == 0) {
+                    btnPrevStep.setVisibility(View.INVISIBLE);
+                    setBtnText("Bước 1", "Bước 2");
+                } else {
+                    btnPrevStep.setVisibility(View.VISIBLE);
+                    setBtnText("Bước 1", "Bước 3");
+                }
                 btnNextStep.setVisibility(View.VISIBLE);
-                btnPrevStep.setVisibility(View.INVISIBLE);
             }
         });
         if (listAvailableSlots == null) {
@@ -122,6 +133,10 @@ public class BookApptActivity extends BaseActivity implements BookStep1Fragment.
 //        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
 
+    private void setBtnText(String btnPrev, String btnNext){
+        btnPrevStep.setText(btnPrev);
+        btnNextStep.setText(btnNext);
+    }
 
     @Override
     public void callDataResource() {
@@ -139,7 +154,7 @@ public class BookApptActivity extends BaseActivity implements BookStep1Fragment.
                         listAvailableSlots.clear();
                         listAvailableSlots.addAll(listResponse.body());
                         fragment1.setAvailableSlots(listAvailableSlots);
-                       if (fragment2 != null) {
+                        if (fragment2 != null) {
                             fragment2.setAvailableSlots(listAvailableSlots);
                         }
                     }
@@ -176,7 +191,8 @@ public class BookApptActivity extends BaseActivity implements BookStep1Fragment.
         finish();
         return true;
     }
-//call when user click on checkbox, it will add data to current list lay on the BookAppActivity
+
+    //call when user click on checkbox, it will add data to current list lay on the BookAppActivity
     //       FragmentStep1  ->     FragmentStep2
     //               BookAppActivity
     @Override

@@ -18,7 +18,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
     private static Retrofit retrofit = null;
-    private static String baseUrl = "http://eltms.azurewebsites.net/";
+//    private static String baseUrl = "http://192.168.1.11:52406";
+    private static String baseUrl = "http://eltms-capstone.azurewebsites.net/";
     private static String accessToken = "null";
 //    private static String baseUrl = "http://10.0.2.2:8000";
 //    private static String baseUrl = "http://10.0.2.2:52406";
