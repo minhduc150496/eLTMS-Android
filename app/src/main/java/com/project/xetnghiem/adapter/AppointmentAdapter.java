@@ -30,7 +30,7 @@ public class AppointmentAdapter extends BaseAdapter {
     private AppointmentAdapterListener appointmentAdapterListener;
 
     private Context context;
-    private List<Appointment> data = new ArrayList<>();
+    private List<Appointment> data;
     private LayoutInflater inflater;
 
     public AppointmentAdapter(Context context, List<Appointment> list,
@@ -86,18 +86,6 @@ public class AppointmentAdapter extends BaseAdapter {
             holder.btnEdit = view.findViewById(R.id.btn_edit);
             holder.btnView = view.findViewById(R.id.btn_view_result);
             holder.btnDetail = view.findViewById(R.id.btn_detail);
-            holder.btnDelete.setOnClickListener((v) -> {
-                appointmentAdapterListener.onDeleteClick(v, appointment, position);
-            });
-            holder.btnEdit.setOnClickListener((v) -> {
-                appointmentAdapterListener.onEditClick(v, appointment, position);
-            });
-            holder.btnView.setOnClickListener((v) -> {
-                appointmentAdapterListener.onViewClick(v, appointment, position);
-            });
-            holder.btnDetail.setOnClickListener((v) -> {
-                appointmentAdapterListener.onDetailClick(v, appointment, position);
-            });
 
 //            switch (rowType) {
 //                case TYPE_NEW:
@@ -121,6 +109,19 @@ public class AppointmentAdapter extends BaseAdapter {
         } else {
             holder = (AppointmentAdapter.ViewHolder) view.getTag();
         }
+        holder.btnDelete.setOnClickListener((v) -> {
+            appointmentAdapterListener.onDeleteClick(v, appointment, position);
+        });
+        holder.btnEdit.setOnClickListener((v) -> {
+            appointmentAdapterListener.onEditClick(v, appointment, position);
+        });
+        holder.btnView.setOnClickListener((v) -> {
+            appointmentAdapterListener.onViewClick(v, appointment, position);
+        });
+        holder.btnDetail.setOnClickListener((v) -> {
+            appointmentAdapterListener.onDetailClick(v, appointment, position);
+        });
+
         switch (getItemViewType(position)) {
             case TYPE_NEW:
                 holder.btnView.setVisibility(View.GONE);

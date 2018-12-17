@@ -30,7 +30,7 @@ import okhttp3.ResponseBody;
 
 public class Utils {
 
-    private static final String PREF_NAME = "ACCOUNT";
+    private static final String PREF_NAME = "ACCOUNT2";
     private static final String STAFF_KEY = "STAFF_KEY";
     private static final String FINGER_AUTH_KEY = "FINGER_AUTH_KEY";
     private static final String PATIENTS_KEY = "PATIENTS_KEY";
