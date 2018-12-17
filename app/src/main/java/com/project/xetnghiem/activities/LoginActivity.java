@@ -107,6 +107,7 @@ public class LoginActivity extends BaseActivity {
         if (CoreManager.getPatient(this) != null) {
             redirectToMain();
         }
+        btnBack.setVisibility(View.INVISIBLE);
     }
 
 

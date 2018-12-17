@@ -31,6 +31,7 @@ public class MainActivity extends BaseActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayShowHomeEnabled(true);
+            btnBack.setVisibility(View.INVISIBLE);
         }
     }
 

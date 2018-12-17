@@ -37,7 +37,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
 
     // Tool bar
     private ImageButton btnNotification;
-    private ImageButton btnBack;
+    protected ImageButton btnBack;
     private TextView txtNumNotification;
     private CircleImageView btnAvatar;
 
@@ -80,6 +80,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
             redirectToActivityWithTop(AccountActivity.class, false);
         });
         btnBack = toolbar.findViewById(R.id.btn_toolbar_back);
+        btnBack.setVisibility(View.VISIBLE);
         btnBack.setOnClickListener((v) -> {
             finish();
         });
@@ -98,7 +99,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
             }
 
         });//set visible item
-
         if (this instanceof LoginActivity || this instanceof RegisterActivity || this instanceof AppointmentResultActivity) {
             btnNotification.setVisibility(View.INVISIBLE);
             btnAvatar.setVisibility(View.INVISIBLE);
@@ -117,6 +117,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
         } else {
             hideNotiNumber();
         }
+        btnNotification.setVisibility(View.INVISIBLE);
     }
 
     @Override

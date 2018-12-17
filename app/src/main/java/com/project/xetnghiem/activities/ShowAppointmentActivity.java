@@ -129,6 +129,8 @@ public class ShowAppointmentActivity extends BaseActivity implements Appointment
                                        adapter.notifyDataSetChanged();
                                    }else{
                                        showMessage("Không có dữ liệu");
+                                       listAppointment.clear();
+                                       adapter.notifyDataSetChanged();
                                    }
 
                                }

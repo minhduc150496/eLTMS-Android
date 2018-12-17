@@ -78,6 +78,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
 //        btnChangePhone.setOnClickListener(this);
         btnChangePassword = findViewById(R.id.btn_edit_password);
         btnChangePassword.setOnClickListener(this);
+        btnChangeAvatar.setVisibility(View.INVISIBLE);
         cvAvatar = findViewById(R.id.img_avatar_user);
         txtName = findViewById(R.id.txt_name);
         txtPhone = findViewById(R.id.txt_phone);
