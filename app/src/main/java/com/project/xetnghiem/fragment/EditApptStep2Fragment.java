@@ -42,7 +42,7 @@ public class EditApptStep2Fragment extends BaseFragment {
     private TextView tvPrice;
     private ListView listSampleBook;
     private TextView tvDateError;
-    private Button btnQuickBook;
+    private Button btnBook;
     View mainView;
     private Appointment modifiedAppt;
     private EditSampleAdapter adapter;
@@ -107,14 +107,12 @@ public class EditApptStep2Fragment extends BaseFragment {
 
     @Override
     public void bindView() {
-
-//        tvTime = mainView.findViewById(R.id.tv_time_quickbook);
-//        tvPrice =mainView. findViewById(R.id.tv_price);
-        btnQuickBook = mainView.findViewById(R.id.btn_book);
+        btnBook = mainView.findViewById(R.id.btn_book);
         listSampleBook = mainView.findViewById(R.id.list_view_book_sample);
-
-
-        btnQuickBook.setOnClickListener((view) -> {
+        TextView txtStep2Title = mainView.findViewById(R.id.title_appt_step2);
+        txtStep2Title.setText("Chọn thời gian khám:");
+        btnBook.setText("Sửa lịch");
+        btnBook.setOnClickListener((view) -> {
             callApiBookAppointment();
         });
     }

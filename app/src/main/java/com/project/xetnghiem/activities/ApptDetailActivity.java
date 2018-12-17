@@ -60,7 +60,7 @@ public class ApptDetailActivity extends BaseActivity {
             tvSampleName.setText(ad.getSampleName() + ": ");
             tvSampleName.setTypeface(null, Typeface.BOLD);
             tvSampleName.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_fiber_manual_record_black_24dp, 0, 0, 0);
-            tvDateText.setText("ngày");
+            tvDateText.setText(" ngày ");
             tvStartDate.setText(ad.getGettingDate());
             tvStartDate.setTypeface(null, Typeface.BOLD);;
             tvStartDate.setTextColor(ContextCompat.getColor(this, R.color.color_red_500));
@@ -78,6 +78,7 @@ public class ApptDetailActivity extends BaseActivity {
 
             linearSampleList.addView(linearLayout);
             for (LabTest labTest : ad.getLabTests()) {
+                if(labTest == null) {return;}
                 LinearLayout linearLabtest = new LinearLayout(this);
                 TextView tvLabtestName = new TextView(this);
                 TextView tvLabPrice = new TextView(this);

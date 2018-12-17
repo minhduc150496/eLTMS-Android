@@ -75,6 +75,9 @@ public class BookSampleAdapter extends BaseAdapter {
         if (holder.txtDate != null) {
             final TextView txtDateFinal = holder.txtDate;
             final Calendar c = Calendar.getInstance();
+            final Calendar minDate = Calendar.getInstance();
+            final Calendar maxDate = Calendar.getInstance();
+            maxDate.set(Calendar.DAY_OF_MONTH, maxDate.get(Calendar.DAY_OF_MONTH) +7);
             int year = c.get(Calendar.YEAR);
             int month = c.get(Calendar.MONTH);
             int day = c.get(Calendar.DAY_OF_MONTH);
@@ -90,6 +93,8 @@ public class BookSampleAdapter extends BaseAdapter {
                             dto.setDateStr(DateUtils.getDate(c.getTime(), DateTimeFormat.DATE_TIME_DB_2));
                             int a = 0;
                         }, year, month, day);
+                dialog.getDatePicker().setMinDate(minDate.getTimeInMillis());
+                dialog.getDatePicker().setMaxDate(maxDate.getTimeInMillis());
                 dialog.show();
             });
 

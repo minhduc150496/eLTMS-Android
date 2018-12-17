@@ -110,8 +110,8 @@ public class BookStep1Fragment extends BaseFragment {
 
 
     public void setAvailableSlots(List<Slot> list) {
-        availableSlotsList.clear();
-        availableSlotsList.addAll(list);
+//        availableSlotsList.clear();
+//        availableSlotsList.addAll(list);
     }
 
     private int findLabtestPos(int id) {

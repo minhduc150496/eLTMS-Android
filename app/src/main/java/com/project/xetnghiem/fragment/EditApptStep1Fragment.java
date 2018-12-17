@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.project.xetnghiem.R;
 import com.project.xetnghiem.adapter.SampleHeaderAdapter;
@@ -160,6 +161,8 @@ public class EditApptStep1Fragment extends BaseFragment {
     public void bindView() {
         listViewSamle = mainView.findViewById(R.id.listview_sample);
 
+        TextView txtStep1Title = mainView.findViewById(R.id.title_appt_step1);
+        txtStep1Title.setText("Chọn loại xét nghiệm:");
     }
 
 

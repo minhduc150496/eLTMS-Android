@@ -30,7 +30,12 @@ public class Validation {
 
     public static boolean isPhoneValid(String phone) {
         //TODO: Replace this with your own logic
-        return phone.matches("^\\d{6,}$");
+        String pattern = "^[0][0-9]{9,10}$";
+        Pattern r = Pattern.compile(pattern);
+
+        Matcher m = r.matcher(phone);
+        boolean result = m.find();
+        return result;
     }
 
     public static boolean isNullOrEmpty(String source) {

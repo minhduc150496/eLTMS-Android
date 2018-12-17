@@ -17,26 +17,37 @@
             android:id="@+id/pager_sample"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/btn_next_step">
+            android:layout_above="@id/nav_section">
 
         </com.project.xetnghiem.adapter.CustomViewPager>
 
+        <LinearLayout
+            android:id="@+id/nav_section"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true">
         <Button
             android:id="@+id/btn_prev_step"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20dp"
-            android:text="Bước 1" />
+            android:layout_margin="15dp"
+            style="@style/custom_button_blue"
+            android:minHeight="40dp"
+            android:text="Bước 1" /></LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true">
         <Button
             android:id="@+id/btn_next_step"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20dp"
-            android:text="Bước 2" />
+            android:layout_margin="15dp"
+            android:minHeight="40dp"
+            style="@style/custom_button_blue"
+            android:text="Bước 2" /></LinearLayout>
     </RelativeLayout>
 </LinearLayout>

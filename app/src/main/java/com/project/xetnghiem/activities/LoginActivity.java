@@ -137,7 +137,7 @@ public class LoginActivity extends BaseActivity {
 
         if (cancel) {
             focusView.requestFocus();
-            showMessage("Số điện thoại không hợp lệ!");
+            showMessage("Vui lòng điền thông tin hợp lệ");
         } else {
             LoginRequest request = new LoginRequest();
             request.setPhone(phone);

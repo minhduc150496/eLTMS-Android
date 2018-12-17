@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.project.xetnghiem.R;
 import com.project.xetnghiem.adapter.CustomViewPager;

@@ -34,6 +34,7 @@ public class BookStep0Fragment extends BaseFragment {
     private ApptPatientDto patientDto;
     private String selectedGender;
     private boolean validationError = true;
+    final Calendar c = Calendar.getInstance();
 
     public BookStep0Fragment() {
         // Required empty public constructor
@@ -62,8 +63,7 @@ public class BookStep0Fragment extends BaseFragment {
         txtPhoneNumber = v.findViewById(R.id.edt_phone_createappt_step0);
         txtHomeAddress = v.findViewById(R.id.edt_address);
         patientDto = new ApptPatientDto();
-
-        final Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, 2000);
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
         int day = c.get(Calendar.DAY_OF_MONTH);
@@ -75,7 +75,7 @@ public class BookStep0Fragment extends BaseFragment {
                             c.set(iYear, iMonth, iDay, 23, 59);
                             txtDateOfBirth.setText(DateUtils.getDate(c.getTime(), DateTimeFormat.DATE_TIME_DB_2));
 //                            dto.setDateStr(DateUtils.getDate(c.getTime(), DateTimeFormat.DATE_TIME_DB_2));
-                        }, 2000, month, day);
+                        }, year, month, day);
                 dialog.show();
             }
         });
@@ -125,6 +125,7 @@ public class BookStep0Fragment extends BaseFragment {
         String gender = getGenderValue(rgGender.getCheckedRadioButtonId());
         String address = txtHomeAddress.getText().toString();
         String phoneNumber = txtPhoneNumber.getText().toString();
+        boolean valid = !Validation.isPhoneValid(phoneNumber);
         if (Validation.isNullOrEmpty(fullname)) {
             showMessage("Vui lòng nhập tên");
         } else if (Validation.isNullOrEmpty(dateOfBirth) || dateOfBirth.equals("Ngày sinh")) {
@@ -133,6 +134,8 @@ public class BookStep0Fragment extends BaseFragment {
             showMessage("Vui lòng chọn giới tính");
         } else if (Validation.isNullOrEmpty(phoneNumber)) {
             showMessage("Vui lòng nhập số điện thoại");
+        } else if (!Validation.isPhoneValid(phoneNumber)) {
+            showMessage("Định dạng số điện thoại không hợp lệ!");
         } else if (Validation.isNullOrEmpty(address)) {
             showMessage("Vui lòng nhập địa chỉ");
         }
@@ -149,7 +152,9 @@ public class BookStep0Fragment extends BaseFragment {
                 dateOfBirth.equals("Ngày sinh") ||
                 Validation.isNullOrEmpty(gender) ||
                 Validation.isNullOrEmpty(address) ||
-                Validation.isNullOrEmpty(phoneNumber)) return null;
+                Validation.isNullOrEmpty(phoneNumber) ||
+                !Validation.isPhoneValid(phoneNumber))
+            return null;
         patientDto.setAddress(address.trim());
         patientDto.setDateOfBirth(dateOfBirth.trim());
         patientDto.setGender(gender.trim());

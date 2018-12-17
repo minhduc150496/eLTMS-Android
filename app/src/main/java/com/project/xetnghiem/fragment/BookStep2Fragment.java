@@ -48,13 +48,13 @@ public class BookStep2Fragment extends BaseFragment {
     private TextView txtDate;
     private ListView listSampleBook;
     private TextView tvDateError;
-    private Button btnQuickBook;
+    private Button btnBook;
     View mainView;
     private BookSampleAdapter adapter;
     private List<SampleDto> listSampleDto;
     private List<Slot> availableSlots;
     private  ApptPatientDto patientDto;
-
+    final Calendar c = Calendar.getInstance();
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,17 +125,16 @@ public class BookStep2Fragment extends BaseFragment {
 
 //        tvTime = mainView.findViewById(R.id.tv_time_quickbook);
 //        tvPrice =mainView. findViewById(R.id.tv_price);
-        btnQuickBook = mainView.findViewById(R.id.btn_book);
+        btnBook = mainView.findViewById(R.id.btn_book);
         listSampleBook = mainView.findViewById(R.id.list_view_book_sample);
         txtDate = mainView.findViewById(R.id.txt_sample_date);
 //        txtTime = mainView.findViewById(R.id.txt_sample_time);
-
-        btnQuickBook.setOnClickListener((view) -> {
+        btnBook.setText("Đặt lịch");
+        btnBook.setOnClickListener((view) -> {
             callApiBookAppointment();
         });
         if ( txtDate != null) {
             final TextView txtDateFinal = txtDate;
-            final Calendar c = Calendar.getInstance();
             int year = c.get(Calendar.YEAR);
             int month = c.get(Calendar.MONTH);
             int day = c.get(Calendar.DAY_OF_MONTH);
@@ -147,21 +146,8 @@ public class BookStep2Fragment extends BaseFragment {
                         (DatePicker datePicker, int iYear, int iMonth, int iDay) -> {
                             String date = iDay + "/" + (iMonth + 1) + "/" + iYear;
                             c.set(iYear, iMonth, iDay, 23, 59);
-//                            if (currentDay.after(c)) {
-////                                tvDateError.setText(getString(R.string.label_error_appnt_date));
-////                                isDateValid = false;
-//                            } else {
-////                                tvDateError.setText("");
-////                                isDateValid = true;
-//                            }
                             txtDateFinal.setText(DateUtils.getDate(c.getTime(), DateTimeFormat.DATE_APP));
-//                            holder.txtDate.setTextColor(
-//                                    ContextCompat.getColor(getContext(), R.color.color_black)
-//                            );
                         }, year, month, day);
-//                dialog.setButton(DatePickerDialog.BUTTON_POSITIVE, getString(R.string.OK), dialog);
-//                dialog.setButton(DatePickerDialog.BUTTON_NEGATIVE, getString(R.string.Cancel), (DialogInterface.OnClickListener) null);
-
                 dialog.show();
             });
         }

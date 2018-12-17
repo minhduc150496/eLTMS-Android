@@ -50,6 +50,8 @@ public class ShowAppointmentActivity extends BaseActivity implements Appointment
     public static final String APPT_ID = "APPT_ID";
     public static final String LIST_APPT_DETAIL = "LIST_APPT_DETAIL";
     public static final String APPT_DETAIL = "APPT_DETAIL";
+    public static final int RELOAD_FLAG = 999;
+
 
     @Override
     protected int getLayoutView() {
@@ -135,6 +137,13 @@ public class ShowAppointmentActivity extends BaseActivity implements Appointment
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+       if(requestCode == RELOAD_FLAG){
+           callDataResource();
+       }
+    }
+
+    @Override
     public void onDeleteClick(View v, Appointment appt, int position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(ShowAppointmentActivity.this);
         builder.setMessage("Bạn có muốn xóa?")
@@ -147,6 +156,7 @@ public class ShowAppointmentActivity extends BaseActivity implements Appointment
         AlertDialog alert = builder.create();
         alert.show();
     }
+
 
     @Override
     public void onViewClick(View v, Appointment appt, int position) {
@@ -172,7 +182,7 @@ public class ShowAppointmentActivity extends BaseActivity implements Appointment
         b.putSerializable(LIST_APPT_DETAIL, appt);
         intent.putExtras(b);
 
-        startActivity(intent);
+        startActivityForResult(intent, RELOAD_FLAG);
     }
 
     @Override

@@ -27,7 +27,7 @@
     <string name="dialog_default_title">Thông báo</string>
     <string name="label_phone_bookappt">Số điện thoại</string>
     <string name="label_email_bookappt">Email</string>
-    <string name="label_account">Số điện thoại hoặc email</string>
+    <string name="label_account">Số điện thoại</string>
     <string name="label_fullname_quickbook">Tên</string>
     <string name="label_date_bookapt">Ngày hẹn</string>
     <string name="label_time_bookapt">Thời gian</string>
