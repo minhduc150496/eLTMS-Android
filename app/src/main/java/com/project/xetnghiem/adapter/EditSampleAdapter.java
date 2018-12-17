@@ -74,6 +74,9 @@ public class EditSampleAdapter extends BaseAdapter {
             int year = c.get(Calendar.YEAR);
             int month = c.get(Calendar.MONTH);
             int day = c.get(Calendar.DAY_OF_MONTH);
+            final Calendar minDate = Calendar.getInstance();
+            final Calendar maxDate = Calendar.getInstance();
+            maxDate.set(Calendar.DAY_OF_MONTH, maxDate.get(Calendar.DAY_OF_MONTH) +7);
             Calendar currentDay = Calendar.getInstance();
             holder.txtDate.setText(DateUtils.getDate(c.getTime(), DateTimeFormat.DATE_APP));
             holder.txtDate.setOnClickListener((vw) ->
@@ -98,6 +101,8 @@ public class EditSampleAdapter extends BaseAdapter {
 //                dialog.setButton(DatePickerDialog.BUTTON_POSITIVE, getString(R.string.OK), dialog);
 //                dialog.setButton(DatePickerDialog.BUTTON_NEGATIVE, getString(R.string.Cancel), (DialogInterface.OnClickListener) null);
 
+                dialog.getDatePicker().setMinDate(minDate.getTimeInMillis());
+                dialog.getDatePicker().setMaxDate(maxDate.getTimeInMillis());
                 dialog.show();
             });
 

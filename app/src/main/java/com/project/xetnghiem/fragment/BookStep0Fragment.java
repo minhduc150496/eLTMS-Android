@@ -4,6 +4,8 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,6 +55,11 @@ public class BookStep0Fragment extends BaseFragment {
     }
 
     @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -64,9 +71,9 @@ public class BookStep0Fragment extends BaseFragment {
         txtHomeAddress = v.findViewById(R.id.edt_address);
         patientDto = new ApptPatientDto();
         c.set(Calendar.YEAR, 2000);
-        int year = c.get(Calendar.YEAR);
-        int month = c.get(Calendar.MONTH);
-        int day = c.get(Calendar.DAY_OF_MONTH);
+        Calendar maxDate = Calendar.getInstance();
+        Calendar minDate = Calendar.getInstance();
+        minDate.set(Calendar.YEAR, 1920);
         txtDateOfBirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -75,7 +82,9 @@ public class BookStep0Fragment extends BaseFragment {
                             c.set(iYear, iMonth, iDay, 23, 59);
                             txtDateOfBirth.setText(DateUtils.getDate(c.getTime(), DateTimeFormat.DATE_TIME_DB_2));
 //                            dto.setDateStr(DateUtils.getDate(c.getTime(), DateTimeFormat.DATE_TIME_DB_2));
-                        }, year, month, day);
+                        }, c.get(Calendar.YEAR), c.get(Calendar.MONTH), c.get(Calendar.DAY_OF_MONTH));
+                dialog.getDatePicker().setMaxDate(maxDate.getTimeInMillis());
+                dialog.getDatePicker().setMinDate(minDate.getTimeInMillis());
                 dialog.show();
             }
         });
