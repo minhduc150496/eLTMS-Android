@@ -21,8 +21,10 @@ import com.project.xetnghiem.api.responseObj.ResponseMessage;
 import com.project.xetnghiem.api.services.AppointmentService;
 import com.project.xetnghiem.models.Appointment;
 import com.project.xetnghiem.models.LabTest;
+import com.project.xetnghiem.models.Patient;
 import com.project.xetnghiem.models.SampleDto;
 import com.project.xetnghiem.models.Slot;
+import com.project.xetnghiem.utilities.CoreManager;
 import com.project.xetnghiem.utilities.Validation;
 
 import java.util.ArrayList;
@@ -118,8 +120,9 @@ public class EditApptStep2Fragment extends BaseFragment {
     }
 
     public void callApiBookAppointment() {
+        Patient patient = CoreManager.getPatient(getContext());
         ApptUpdateRequest request = new ApptUpdateRequest();
-        request.setPatientId(71);
+        request.setPatientId(patient.getId());
         request.setAppointmentId(modifiedAppt.getAppointmentId());
         List<ApptCreateRequest.SampleGettingDtos> list = new ArrayList<>();
         for (SampleDto dto : listSampleDto) {

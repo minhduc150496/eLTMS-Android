@@ -47,5 +47,5 @@ public class AppConst {
     public final static String PREF_NAME_SAMPLE_LIST = "PROMOTION";
     public final static String KEY_SAMPLE_LIST = "TOPIC_RELOAD_APPOINTMENT";
     public final static String APPOINTMENT_STATUS_NEW = "NEW";
-    public final static String APPOINTMENT_STATUS_DONE = "DOCTORDONE ";
+    public final static String APPOINTMENT_STATUS_DONE = "DOCTORDONE";
 }
