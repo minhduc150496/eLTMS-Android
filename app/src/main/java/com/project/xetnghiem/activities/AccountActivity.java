@@ -48,7 +48,7 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
     public static int REQUEST_CHANGE_PASSWORD = 10000;
     Button btnChangeAvatar, btnEdit, btnLogout, btnChangePassword;
     CircleImageView cvAvatar;
-    TextView txtName, txtPhone,txtEmail,txtCardNumber;
+    TextView txtName, txtPhone,txtEmail,txtCardNumber, txtDateOfBirth;
     Patient patient;
 
     @Override
@@ -82,8 +82,9 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
         cvAvatar = findViewById(R.id.img_avatar_user);
         txtName = findViewById(R.id.txt_name);
         txtPhone = findViewById(R.id.txt_phone);
-        txtEmail = findViewById(R.id.txt_email_account);
-        txtCardNumber = findViewById(R.id.txt_card_number);
+//        txtDateOfBirth = findViewById(R.id.txt_date_of_birth); // DBM
+//        txtEmail = findViewById(R.id.txt_email_account);
+//        txtCardNumber = findViewById(R.id.txt_card_number);
     }
 
     @Override
@@ -114,14 +115,18 @@ public class AccountActivity extends BaseActivity implements View.OnClickListene
             if (patient.getName() != null) {
                 txtName.setText(patient.getName());
             }
-            if (patient.getEmail() != null) {
-                txtEmail.setText(patient.getEmail());
-            }
+//            if (patient.getEmail() != null) {
+//                txtEmail.setText(patient.getEmail());
+//            }
             if (patient.getPhone() != null) {
                 txtPhone.setText(patient.getPhone());
-            }if (patient.getIdentityCardNumber() != null) {
-                txtCardNumber.setText(patient.getIdentityCardNumber());
             }
+//            if (patient.getIdentityCardNumber() != null) {
+//                txtCardNumber.setText(patient.getIdentityCardNumber());
+//            }
+//            if (patient.getDateOfBirth()!=null) {
+//                txtDateOfBirth.setText(patient.getDateOfBirth());
+//            }
         }
     }
 

@@ -93,10 +93,12 @@ public class ShowAppointmentActivity extends BaseActivity implements Appointment
                     @Override
                     protected void onResponseSuccess(Response<ResponseMessage> response) {
                         if (response.body().isSuccess()) {
-                            showMessage(response.body().getMessage());
+                            String message = response.body().getMessage();
+                            showMessage(message.isEmpty()?"Hủy lịch thành công": message);
                             callDataResource();
                         } else {
-                            showMessage(response.body().getMessage());
+                            String message = response.body().getMessage();
+                            showMessage(message.isEmpty()?"Có lỗi xảy ra. Xin vui lòng thử lại.": message);
                         }
 
                     }

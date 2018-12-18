@@ -65,24 +65,43 @@
                 android:layout_marginBottom="10dp"
                 android:background="@color/color_grey_200" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="16dp">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical"-->
+                <!--android:paddingLeft="16dp">-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Địa chỉ email" />
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Ngày sinh" />-->
 
-                <TextView
-                    android:id="@+id/txt_email_account"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/color_black"
-                    android:textSize="15dp" />
-            </LinearLayout>
+                <!--<TextView-->
+                    <!--android:id="@+id/txt_date_of_birth"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textColor="@color/color_black"-->
+                    <!--android:textSize="15dp" />-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical"-->
+                <!--android:paddingLeft="16dp">-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Địa chỉ email" />-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/txt_email_account"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textColor="@color/color_black"-->
+                    <!--android:textSize="15dp" />-->
+            <!--</LinearLayout>-->
 
             <View
                 android:layout_width="match_parent"
@@ -174,25 +193,25 @@
                 android:layout_marginBottom="10dp"
                 android:background="@color/color_grey_200" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="16dp">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:orientation="vertical"-->
+                <!--android:paddingLeft="16dp">-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Chứng minh nhân dân" />
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="Chứng minh nhân dân" />-->
 
-                <TextView
-                    android:id="@+id/txt_card_number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text=""
-                    android:textColor="@color/color_black"
-                    android:textSize="15dp" />
-            </LinearLayout>
+                <!--<TextView-->
+                    <!--android:id="@+id/txt_card_number"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text=""-->
+                    <!--android:textColor="@color/color_black"-->
+                    <!--android:textSize="15dp" />-->
+            <!--</LinearLayout>-->
 
             <View
                 android:layout_width="match_parent"

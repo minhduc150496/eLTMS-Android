@@ -153,6 +153,7 @@ public class AppointmentResultActivity extends BaseActivity {
     }
 
     private String getGenderInVN(String val){
+        val = val.toUpperCase();
         switch (val){
             case "MALE":return "Nam";
             case "FEMALE" : return "Nữ";
