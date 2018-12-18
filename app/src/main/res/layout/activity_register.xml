@@ -103,7 +103,6 @@
                     android:drawableStart="@drawable/ic_credit_card_black_24dp"
                     android:hint="Chứng minh nhân dân"
                     android:imeOptions="actionNext"
-                    android:inputType="textPassword"
                     android:maxLines="1"
                     android:textSize="@dimen/edittext_size_medium" />
             </android.support.design.widget.TextInputLayout>
